@@ -507,7 +507,7 @@ def convert_unet(pipe, args):
         sample_unet_inputs = OrderedDict([
             ("sample", torch.rand(*sample_shape)),
             ("timestep",
-             torch.tensor([pipe.scheduler.timesteps[0].item()] *
+             torch.tensor([np.array(pipe.scheduler.timesteps[0]).item()] *
                           (batch_size)).to(torch.float32)),
             ("encoder_hidden_states", torch.rand(*encoder_hidden_states_shape))
         ])
